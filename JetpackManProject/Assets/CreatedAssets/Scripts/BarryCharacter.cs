@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace UnityStandardAssets._2D
@@ -13,6 +14,8 @@ namespace UnityStandardAssets._2D
         [SerializeField] private LayerMask m_WhatIsGround;
 
         [SerializeField] GameObject projectile;
+
+         public int health = 100;
         
          static public bool plain = true;
          static public bool gun = false;
@@ -62,7 +65,7 @@ namespace UnityStandardAssets._2D
         }
 
 
-        public void Move(float move, bool fire, float fly)
+        public void Move(float move, bool attack, float fly)
         {
 
 
@@ -114,11 +117,33 @@ namespace UnityStandardAssets._2D
                 plain = true;
                 m_Anim.SetBool("Plain", plain);
             }
-            if (fire && gun)
+            if (attack && gun)
             {
                 fireGun();
             }
+            if(attack && sword)
+            {
+                StartCoroutine(SwingSword());
+               
+            }
+            
+            
+            
         }
+
+        private IEnumerator SwingSword()
+        {
+            //Debug.Log("swing?");
+            if (m_Anim.GetBool("Ground"))
+            {
+                 m_Anim.SetBool("SwingSword", true);
+                 yield return new WaitForSeconds(.4f);
+                Debug.Log("Delay?");
+                m_Anim.SetBool("SwingSword", false);
+            }
+        }
+
+        
 
         public void fireGun()
         {GameObject fired;
@@ -176,6 +201,16 @@ namespace UnityStandardAssets._2D
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
+        }
+        public void TakeDamage(int damage)
+        {
+            health = health - damage;
+            Debug.Log("Ouch!");
+            if (health <= 0)
+            {
+                m_Anim.SetBool("Dead", true);
+                Debug.Log("Your Dead!!!");
+            }
         }
     }
 }

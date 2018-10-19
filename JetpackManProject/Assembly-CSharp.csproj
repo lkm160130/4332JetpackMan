@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\CreatedAssets\Scripts\BarryCharacter.cs" />
     <Compile Include="Assets\CreatedAssets\Scripts\BarryUserControl.cs" />
+    <Compile Include="Assets\CreatedAssets\Scripts\EnemyScript.cs" />
     <Compile Include="Assets\CreatedAssets\Scripts\GunProjectileScript.cs" />
     <Compile Include="Assets\CreatedAssets\Scripts\GunScript.cs" />
     <Compile Include="Assets\CreatedAssets\Scripts\mass.cs" />

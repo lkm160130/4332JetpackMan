@@ -35,10 +35,10 @@ namespace UnityStandardAssets._2D
             fly = CrossPlatformInputManager.GetAxis("Vertical");
             //bool crouch = Input.GetKey(KeyCode.LeftControl);
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            bool fire = CrossPlatformInputManager.GetButtonDown("Fire1");
+            bool attack = CrossPlatformInputManager.GetButtonDown("Fire1");
             
             // Pass all parameters to the character control script.
-            m_Character.Move(h, fire,  fly);
+            m_Character.Move(h, attack,  fly);
             fly = 0;
 
         }
