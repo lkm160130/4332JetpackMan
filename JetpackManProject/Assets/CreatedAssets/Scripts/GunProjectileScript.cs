@@ -22,6 +22,7 @@ namespace UnityStandardAssets._2D {
                 rBody.velocity = new Vector2(projectileSpeed, 0);
                 Debug.Log(GetComponent<Transform>().position.x + " < " + GameObject.Find("Barry").transform.position.x);
             }
+			StartCoroutine(ProjectileTimeOut());
         }
 
 
@@ -54,5 +55,13 @@ namespace UnityStandardAssets._2D {
             theScale.x *= -1;
             transform.localScale = theScale;
         }
+
+		IEnumerator ProjectileTimeOut()
+		{
+			
+
+			yield return new WaitForSeconds(5);
+			Destroy (gameObject);
+		}
     }
 }

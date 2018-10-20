@@ -14,9 +14,12 @@ namespace UnityStandardAssets._2D
         [SerializeField] private LayerMask m_WhatIsGround;
 
         [SerializeField] GameObject projectile;
+		[SerializeField] GameObject jetpackFire;
 
          public int health = 100;
         
+		private bool fly; 
+
          static public bool plain = true;
          static public bool gun = false;
          static public bool sword = false;
@@ -39,6 +42,9 @@ namespace UnityStandardAssets._2D
             m_Anim = GetComponent<Animator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
         }
+		private void Start(){
+			StartCoroutine (MakeJetpackFire ());
+		}
 
 
         private void FixedUpdate()
@@ -67,67 +73,65 @@ namespace UnityStandardAssets._2D
 
         public void Move(float move, bool attack, float fly)
         {
+			if (fly > .1f)
+				this.fly = true;
+			else
+				this.fly = false;
+
+			if (!m_Anim.GetBool ("Dying") && !m_Anim.GetBool ("Dead")) {
 
 
+				//only control the player if grounded or airControl is turned on
+				if (m_Grounded || m_AirControl) {
+					// Reduce the speed if crouching by the crouchSpeed multiplier
 
 
+					// The Speed animator parameter is set to the absolute value of the horizontal input.
+					m_Anim.SetFloat ("Speed", Mathf.Abs (move));
 
-            //only control the player if grounded or airControl is turned on
-            if (m_Grounded || m_AirControl)
-            {
-                // Reduce the speed if crouching by the crouchSpeed multiplier
-
-
-                // The Speed animator parameter is set to the absolute value of the horizontal input.
-                m_Anim.SetFloat("Speed", Mathf.Abs(move));
-
-                // Move the character
-                if (fly > 0.1)
-                {
-                    m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, fly * m_MaxThrust); //[THIS]
-                }
-                else
-                {
-                    m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, m_Rigidbody2D.velocity.y);
-                }
-                // If the input is moving the player right and the player is facing left...
-                if (move > 0 && !m_FacingRight)
-                {
-                    // ... flip the player.
-                    Flip();
-                }
+					// Move the character
+					if (fly > 0.1) {
+						m_Rigidbody2D.velocity = new Vector2 (move * m_MaxSpeed, fly * m_MaxThrust); //[THIS]
+					} else {
+						m_Rigidbody2D.velocity = new Vector2 (move * m_MaxSpeed, m_Rigidbody2D.velocity.y);
+					}
+					// If the input is moving the player right and the player is facing left...
+					if (move > 0 && !m_FacingRight) {
+						// ... flip the player.
+						Flip ();
+					}
                 // Otherwise if the input is moving the player left and the player is facing right...
-                else if (move < 0 && m_FacingRight)
-                {
-                    // ... flip the player.
-                    Flip();
-                }
-            }
-            // If the player should jump...
-            // if (/*m_Grounded &&*/ fly /*&& m_Anim.GetBool("Ground")*/)
-            // {
-            //     // Add a vertical force to the player.
+                else if (move < 0 && m_FacingRight) {
+						// ... flip the player.
+						Flip ();
+					}
+				}
+				// If the player should jump...
+				// if (/*m_Grounded &&*/ fly /*&& m_Anim.GetBool("Ground")*/)
+				// {
+				//     // Add a vertical force to the player.
 
-            if (Math.Abs(fly) > 0.1) m_Grounded = false;
-            //     m_Anim.SetBool("Ground", false);
-            //     m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-            // }
-            if (!gun && !sword)
-            {
-                plain = true;
-                m_Anim.SetBool("Plain", plain);
-            }
-            if (attack && gun)
-            {
-                fireGun();
-            }
-            if(attack && sword)
-            {
-                StartCoroutine(SwingSword());
+				if (Math.Abs (fly) > 0.1)
+					m_Grounded = false;
+				//     m_Anim.SetBool("Ground", false);
+				//     m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+				// }
+				if (!gun && !sword) {
+					plain = true;
+					m_Anim.SetBool ("Plain", plain);
+				}
+				if (attack && gun) {
+					fireGun ();
+				}
+				if (attack && sword) {
+					StartCoroutine (SwingSword ());
                
-            }
+				}
             
-            
+			} else {
+				if (m_Grounded)
+				m_Rigidbody2D.velocity = Vector2.zero;
+			}
             
         }
 
@@ -208,9 +212,32 @@ namespace UnityStandardAssets._2D
             Debug.Log("Ouch!");
             if (health <= 0)
             {
-                m_Anim.SetBool("Dead", true);
-                Debug.Log("Your Dead!!!");
+               
+				StartCoroutine(DeathAnim ());
             }
         }
+		IEnumerator DeathAnim()
+		{
+			m_Anim.SetBool("Dying", true);
+			Debug.Log("Your Dead!!!");
+
+			yield return new WaitForSeconds(.5f);
+			m_Anim.SetBool ("Dying", false);
+			m_Anim.SetBool ("Dead", true);
+		}
+		IEnumerator MakeJetpackFire()
+		{
+			while (true) {
+				if (fly) {
+					if(!m_FacingRight)
+					Instantiate(jetpackFire, new Vector3(GetComponent<Transform>().localPosition.x + 1.3f, GetComponent<Transform>().localPosition.y - .3f), Quaternion.identity);
+					else 
+						Instantiate(jetpackFire, new Vector3(GetComponent<Transform>().localPosition.x - .2f, GetComponent<Transform>().localPosition.y - .3f), Quaternion.identity);
+				}
+				yield return new WaitForSeconds(.05f);
+
+					
+			}
+		}
     }
 }
