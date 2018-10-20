@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 68077528071747394}
   m_Layer: 0
   m_Name: tileset-cave_16 (1)
-  m_TagString: Environment
+  m_TagString: BoundaryCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -406,9 +406,10 @@ GameObject:
   - component: {fileID: 4481247820273072}
   - component: {fileID: 212381583605588014}
   - component: {fileID: 68514882623369380}
+  - component: {fileID: 68692199173523560}
   m_Layer: 0
   m_Name: tileset-cave_15
-  m_TagString: Environment
+  m_TagString: BoundaryCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -441,7 +442,7 @@ GameObject:
   - component: {fileID: 68772409448042578}
   m_Layer: 0
   m_Name: tileset-cave_18
-  m_TagString: Environment
+  m_TagString: BoundaryCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -473,9 +474,10 @@ GameObject:
   - component: {fileID: 4866823359025864}
   - component: {fileID: 212956298786609952}
   - component: {fileID: 68682200326841648}
+  - component: {fileID: 68314997944694966}
   m_Layer: 0
   m_Name: tileset-cave_14
-  m_TagString: Environment
+  m_TagString: BoundaryCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1022,7 +1024,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1013472918695960}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 4.11, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4024424041493750}
@@ -1379,6 +1381,23 @@ EdgeCollider2D:
   m_Points:
   - {x: -1, y: -1}
   - {x: 1, y: -1}
+--- !u!68 &68314997944694966
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811377819284428}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 1, y: 5}
+  - {x: 1, y: 1}
 --- !u!68 &68319772788249630
 EdgeCollider2D:
   m_ObjectHideFlags: 1
@@ -1583,6 +1602,23 @@ EdgeCollider2D:
   m_Points:
   - {x: 1, y: -1}
   - {x: 1, y: 1}
+--- !u!68 &68692199173523560
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1602506740603738}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -1, y: 1}
+  - {x: -1, y: 5}
 --- !u!68 &68697139140855630
 EdgeCollider2D:
   m_ObjectHideFlags: 1

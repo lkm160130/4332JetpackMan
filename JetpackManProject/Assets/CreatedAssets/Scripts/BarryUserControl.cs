@@ -20,26 +20,21 @@ namespace UnityStandardAssets._2D
 
         private void Update()
         {
-            // if (!m_Jump)
-            //{
-            // Read the jump input in Update so button presses aren't missed.
+            // Read the inputs.
+            fly = CrossPlatformInputManager.GetAxis("Vertical");
+            //bool crouch = Input.GetKey(KeyCode.LeftControl);
+            float h = CrossPlatformInputManager.GetAxis("Horizontal");
+            bool attack = CrossPlatformInputManager.GetButtonDown("Fire1");
 
-            // }
+            // Pass all parameters to the character control script.
+            m_Character.Move(h, attack, fly);
+            fly = 0;
         }
 
 
         private void FixedUpdate()
         {
 			
-            // Read the inputs.
-            fly = CrossPlatformInputManager.GetAxis("Vertical");
-            //bool crouch = Input.GetKey(KeyCode.LeftControl);
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            bool attack = CrossPlatformInputManager.GetButtonDown("Fire1");
-            
-            // Pass all parameters to the character control script.
-            m_Character.Move(h, attack,  fly);
-            fly = 0;
 
         }
     }

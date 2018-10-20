@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace UnityStandardAssets._2D
 {
-    public class EnemyScript : MonoBehaviour
+    public class FlyingEnemyScript : MonoBehaviour
     {
         Animator mAnim;
         GameObject player;
         [SerializeField] float moveSpeed = 5;
         bool facingLeft = true;
         int noticeDistance;
-        int aggresiveDistance = 50;
-        int paciveDistance = 10;
+        [SerializeField] int aggresiveDistance = 50;
+        [SerializeField] int paciveDistance = 10;
+        [SerializeField] int damage = 1;
 
         // Use this for initialization
         void Start()
@@ -29,7 +30,7 @@ namespace UnityStandardAssets._2D
 
         void Move()
         {
-            if(Vector2.Distance(player.transform.position, gameObject.transform.position) < noticeDistance)
+            if (Vector2.Distance(player.transform.position, gameObject.transform.position) < noticeDistance)
             {
                 noticeDistance = aggresiveDistance;
                 GetComponent<Rigidbody2D>().velocity = new Vector2(player.transform.position.x - gameObject.transform.position.x,
@@ -41,12 +42,12 @@ namespace UnityStandardAssets._2D
                 noticeDistance = paciveDistance;
             }
 
-            if(player.transform.position.x > gameObject.transform.position.x && facingLeft)
+            if (player.transform.position.x > gameObject.transform.position.x && facingLeft)
             {
                 Flip();
                 facingLeft = false;
             }
-            else if(player.transform.position.x < gameObject.transform.position.x && !facingLeft)
+            else if (player.transform.position.x < gameObject.transform.position.x && !facingLeft)
             {
                 Flip();
                 facingLeft = true;
@@ -56,7 +57,7 @@ namespace UnityStandardAssets._2D
         private void FixedUpdate()
         {
             Move();
-            if(mAnim.GetBool("Attack") == true)
+            if (mAnim.GetBool("Attack") == true)
             {
                 mAnim.SetBool("Attack", false);
             }
@@ -68,8 +69,8 @@ namespace UnityStandardAssets._2D
             {
                 mAnim.SetBool("Attack", true);
                 Debug.Log("Triggered");
-                GameObject.Find("Barry").GetComponent<BarryCharacter>().TakeDamage(5);
-                
+                GameObject.Find("Barry").GetComponent<BarryCharacter>().TakeDamage(damage);
+
             }
         }
 

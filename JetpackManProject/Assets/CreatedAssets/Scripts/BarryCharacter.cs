@@ -121,7 +121,7 @@ namespace UnityStandardAssets._2D
 					m_Anim.SetBool ("Plain", plain);
 				}
 				if (attack && gun) {
-					fireGun ();
+					StartCoroutine(fireGun ());
 				}
 				if (attack && sword) {
 					StartCoroutine (SwingSword ());
@@ -147,16 +147,19 @@ namespace UnityStandardAssets._2D
             }
         }
 
-        
 
-        public void fireGun()
-        {GameObject fired;
+
+        IEnumerator fireGun()
+        {
+            GameObject fired;
+            if (!m_Anim.GetBool("FiringGun")) {
+                m_Anim.SetBool("FiringGun", true);
             if (m_Anim.GetBool("Ground"))
             {
-                if(m_FacingRight)   
-                    fired = Instantiate(projectile, new Vector3(GetComponent<Transform>().localPosition.x + 3, GetComponent<Transform>().localPosition.y -.2f), Quaternion.identity);
+                if (m_FacingRight)
+                    fired = Instantiate(projectile, new Vector3(GetComponent<Transform>().localPosition.x + 3, GetComponent<Transform>().localPosition.y - .2f), Quaternion.identity);
                 else
-                    fired = Instantiate(projectile, new Vector3(GetComponent<Transform>().localPosition.x -3, GetComponent<Transform>().localPosition.y - .2f), Quaternion.identity);
+                    fired = Instantiate(projectile, new Vector3(GetComponent<Transform>().localPosition.x - 3, GetComponent<Transform>().localPosition.y - .2f), Quaternion.identity);
                 //fire in on ground position
             }
             else
@@ -167,6 +170,9 @@ namespace UnityStandardAssets._2D
                     fired = Instantiate(projectile, new Vector3(GetComponent<Transform>().localPosition.x - 3, GetComponent<Transform>().localPosition.y - .4f), Quaternion.identity);
 
             }
+                yield return new WaitForSeconds(0.2f);
+                m_Anim.SetBool("FiringGun", false);
+         }
         }
 
         static public void setGunTrue()
@@ -239,5 +245,6 @@ namespace UnityStandardAssets._2D
 					
 			}
 		}
+
     }
 }
