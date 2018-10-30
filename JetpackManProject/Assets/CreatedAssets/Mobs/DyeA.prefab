@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 95552959038337464}
   - component: {fileID: 50074930414227228}
   - component: {fileID: 58386321136870692}
+  - component: {fileID: 58136781120440254}
   m_Layer: 0
   m_Name: DyeA
   m_TagString: Enemy
@@ -64,6 +65,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &58136781120440254
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1074331161834416}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 23c6d93610edc9f41a76d5785df8ff02, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1
 --- !u!58 &58386321136870692
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -73,7 +89,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 494a19723a409054ebae0c69a1f56e32, type: 2}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

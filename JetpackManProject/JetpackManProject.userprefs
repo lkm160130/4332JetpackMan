@@ -1,0 +1,16 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CreatedAssets\Scripts\BarryCharacter.cs">
+    <Files>
+      <File FileName="Assets\CreatedAssets\Scripts\BarryCharacter.cs" Line="132" Column="20" />
+      <File FileName="Assets\CreatedAssets\Scripts\BarryUserControl.cs" Line="33" Column="4" />
+      <File FileName="Assets\CreatedAssets\Scripts\GunProjectileScript.cs" Line="43" Column="14" />
+      <File FileName="Assets\CreatedAssets\Scripts\GunScript.cs" Line="6" Column="1" />
+      <File FileName="Assets\CreatedAssets\Scripts\JetpackFireScript.cs" Line="17" Column="37" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
