@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace UnityStandardAssets._2D
 {
@@ -245,6 +246,38 @@ namespace UnityStandardAssets._2D
 					
 			}
 		}
+		void OnTriggerEnter2D(Collider2D collidedObject)
+		{
+			Debug.Log ("triggered!!!1");
+
+			switch(collidedObject.name){
+			case "cave_1":
+				SceneManager.LoadScene ("cave_1");
+				break;
+			case "cave_2":
+
+				break;
+			case "cave_3":
+
+				break;
+			case "cave_4":
+
+				break;
+			case "cave_5":
+
+				break;
+			case "cave_6":
+
+				break;
+			case "cave_7":
+
+				break;
+			case "cave_8":
+				
+				break;
+		}
+
 
     }
+}
 }
