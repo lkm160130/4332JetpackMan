@@ -63,6 +63,7 @@
      <Compile Include="Assets\CreatedAssets\Scripts\JetpackFireScript.cs" />
      <Compile Include="Assets\CreatedAssets\Scripts\mass.cs" />
      <Compile Include="Assets\CreatedAssets\Scripts\SwordScript.cs" />
+     <Compile Include="Assets\CreatedAssets\Scripts\TentacleScript.cs" />
      <Compile Include="Assets\CreatedAssets\Scripts\TestLevelManager.cs" />
      <Compile Include="Assets\OverWorldManagerScript.cs" />
      <Compile Include="Assets\PackageAssets\PixelMobs\Script\Ease.cs" />
