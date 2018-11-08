@@ -252,7 +252,7 @@ namespace UnityStandardAssets._2D
 
 			switch(collidedObject.name){
 			case "cave_1":
-				SceneManager.LoadScene("cave_1");
+				SceneManager.LoadScene ("cave_1");
 				break;
 			case "cave_2":
 
