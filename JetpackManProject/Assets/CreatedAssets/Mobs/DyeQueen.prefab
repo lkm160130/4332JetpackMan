@@ -25,6 +25,8 @@ GameObject:
   - component: {fileID: 50829685124386710}
   - component: {fileID: 58320312830241738}
   - component: {fileID: 58546492446833478}
+  - component: {fileID: 114831284456255808}
+  - component: {fileID: 114324826444224786}
   m_Layer: 0
   m_Name: DyeQueen
   m_TagString: Enemy
@@ -128,6 +130,57 @@ MonoBehaviour:
   aggresiveDistance: 50
   paciveDistance: 20
   damage: 100
+--- !u!114 &114324826444224786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1470006935331150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95716984893367368}
+  m_ParameterSendBits: 0
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
+--- !u!114 &114831284456255808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1470006935331150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 176
+    i1: 92
+    i2: 174
+    i3: 249
+    i4: 99
+    i5: 27
+    i6: 112
+    i7: 180
+    i8: 40
+    i9: 250
+    i10: 252
+    i11: 142
+    i12: 165
+    i13: 111
+    i14: 154
+    i15: 175
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!212 &212408315410639070
 SpriteRenderer:
   m_ObjectHideFlags: 1

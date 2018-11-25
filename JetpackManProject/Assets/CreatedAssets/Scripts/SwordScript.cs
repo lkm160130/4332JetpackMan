@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace UnityStandardAssets._2D { 
-public class SwordScript : MonoBehaviour {
+using UnityEngine.Networking;
+namespace UnityStandardAssets._2D
+{ 
+public class SwordScript : NetworkBehaviour
+    {
 
     // Use this for initialization
     void OnTriggerEnter2D(Collider2D collidedObject)

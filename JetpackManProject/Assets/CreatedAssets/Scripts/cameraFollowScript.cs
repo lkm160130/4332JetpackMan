@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class cameraFollowScript : MonoBehaviour {
+public class cameraFollowScript : NetworkBehaviour {
 
     Vector3 vctr = new Vector3(0, 0, -10);
+    [SerializeField] private int id;
 
 	// Use this for initialization
 	void Start () {
@@ -13,6 +15,17 @@ public class cameraFollowScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        gameObject.transform.position = GameObject.Find("Barry").transform.position + vctr;
+        //GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        /* 
+         for(int i = 0; i < 4; i++)
+         {
+             if(players[i].id == id)
+             {
+                 gameObject.transform.position = players[i].transform.position;
+
+             }
+         }
+         */
+        gameObject.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0,0,-10);
 	}
 }

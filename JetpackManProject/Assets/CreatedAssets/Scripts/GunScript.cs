@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 namespace UnityStandardAssets._2D
 {
-    public class GunScript : MonoBehaviour
+    public class GunScript : NetworkBehaviour
     {
         
 

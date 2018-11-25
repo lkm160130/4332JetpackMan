@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 namespace UnityStandardAssets._2D
 {
-    public class FlyingEnemyScript : MonoBehaviour
+    public class FlyingEnemyScript : NetworkBehaviour
     {
         Animator mAnim;
         GameObject player;
@@ -65,11 +66,12 @@ namespace UnityStandardAssets._2D
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            
             if (collision.gameObject.tag == "Player")
             {
                 mAnim.SetBool("Attack", true);
-                Debug.Log("Triggered");
-                GameObject.Find("Barry").GetComponent<BarryCharacter>().TakeDamage(damage);
+                
+                GameObject.Find("Barry").GetComponent<BarryCharacter>().TakeDamage();
 
             }
         }

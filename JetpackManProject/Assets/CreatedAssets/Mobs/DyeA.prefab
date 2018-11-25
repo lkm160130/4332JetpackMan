@@ -25,6 +25,8 @@ GameObject:
   - component: {fileID: 50074930414227228}
   - component: {fileID: 58386321136870692}
   - component: {fileID: 58136781120440254}
+  - component: {fileID: 114296599652111848}
+  - component: {fileID: 114228513169002710}
   m_Layer: 0
   m_Name: DyeA
   m_TagString: Enemy
@@ -113,6 +115,57 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114228513169002710
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1074331161834416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95552959038337464}
+  m_ParameterSendBits: 0
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
+--- !u!114 &114296599652111848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1074331161834416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 56
+    i1: 19
+    i2: 115
+    i3: 245
+    i4: 32
+    i5: 128
+    i6: 86
+    i7: 68
+    i8: 75
+    i9: 12
+    i10: 229
+    i11: 1
+    i12: 142
+    i13: 110
+    i14: 81
+    i15: 36
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114733707045205696
 MonoBehaviour:
   m_ObjectHideFlags: 1

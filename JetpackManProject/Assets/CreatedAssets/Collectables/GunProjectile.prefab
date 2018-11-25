@@ -20,9 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4393871543401296}
   - component: {fileID: 212430310229981420}
+  - component: {fileID: 114537771422416236}
   - component: {fileID: 61886097760113836}
-  - component: {fileID: 114787797380462866}
   - component: {fileID: 50157406537563918}
+  - component: {fileID: 114057385631715182}
+  - component: {fileID: 114023766047882642}
   m_Layer: 0
   m_Name: GunProjectile
   m_TagString: Untagged
@@ -56,7 +58,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 40
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -88,7 +90,60 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.75, y: 0.75}
   m_EdgeRadius: 0
---- !u!114 &114787797380462866
+--- !u!114 &114023766047882642
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1036063614242186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 2
+  m_SendInterval: 0.033333335
+  m_SyncRotationAxis: 3
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114057385631715182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1036063614242186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 59
+    i1: 46
+    i2: 196
+    i3: 25
+    i4: 61
+    i5: 24
+    i6: 201
+    i7: 132
+    i8: 203
+    i9: 184
+    i10: 31
+    i11: 211
+    i12: 255
+    i13: 30
+    i14: 143
+    i15: 79
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
+--- !u!114 &114537771422416236
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

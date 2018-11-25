@@ -25,7 +25,7 @@ public class TentacleScript : MonoBehaviour {
 		{
 
 			Debug.Log("Triggered");
-			GameObject.Find("Barry").GetComponent<BarryCharacter>().TakeDamage(damage);
+			GameObject.Find("Barry").GetComponent<BarryCharacter>().TakeDamage();
 
 		}
 	}

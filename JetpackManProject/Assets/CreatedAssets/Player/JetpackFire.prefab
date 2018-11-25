@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 95841606530556552}
   - component: {fileID: 114514533182734376}
   - component: {fileID: 50849813279083080}
+  - component: {fileID: 114601856373353978}
+  - component: {fileID: 114178495025655714}
   m_Layer: 0
   m_Name: JetpackFire
   m_TagString: Untagged
@@ -81,6 +83,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114178495025655714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1482433581151708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95841606530556552}
+  m_ParameterSendBits: 0
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &114514533182734376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92,6 +113,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569efa221eabcb744aa21d960515875d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114601856373353978
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1482433581151708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 68
+    i1: 18
+    i2: 118
+    i3: 174
+    i4: 141
+    i5: 175
+    i6: 8
+    i7: 52
+    i8: 43
+    i9: 222
+    i10: 122
+    i11: 54
+    i12: 240
+    i13: 37
+    i14: 27
+    i15: 42
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!212 &212827350618151398
 SpriteRenderer:
   m_ObjectHideFlags: 1

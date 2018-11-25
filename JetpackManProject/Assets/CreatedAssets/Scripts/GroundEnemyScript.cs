@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 namespace UnityStandardAssets._2D
 {
-    public class GroundEnemyScript : MonoBehaviour
+    public class GroundEnemyScript : NetworkBehaviour
     {
-        Animator mAnim;
+        private Animator mAnim;
         GameObject player;
         [SerializeField] float moveSpeed = 5;
         bool facingLeft = true;
@@ -76,7 +77,7 @@ namespace UnityStandardAssets._2D
             {
                 mAnim.SetBool("Attack", true);
                 Debug.Log("Triggered");
-                GameObject.Find("Barry").GetComponent<BarryCharacter>().TakeDamage(damage);
+                GameObject.Find("Barry").GetComponent<BarryCharacter>().TakeDamage();
                 
             }
             if(collision.gameObject.tag == "BoundaryCollider")
@@ -111,7 +112,7 @@ namespace UnityStandardAssets._2D
             {
                 mAnim.SetBool("Attack", true);
                 Debug.Log("Triggered");
-                GameObject.Find("Barry").GetComponent<BarryCharacter>().TakeDamage(damage);
+                GameObject.Find("Barry").GetComponent<BarryCharacter>().TakeDamage();
 
             }
             if (collision.gameObject.tag == "Environment")

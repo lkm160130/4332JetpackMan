@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 70376388647333546}
   - component: {fileID: 114946448739496022}
   - component: {fileID: 95042017733087148}
+  - component: {fileID: 114344570189318122}
+  - component: {fileID: 114965694284747776}
   m_Layer: 0
   m_Name: TentacleF
   m_TagString: Untagged
@@ -76,6 +78,38 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114344570189318122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1965822159106628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 117
+    i1: 90
+    i2: 230
+    i3: 40
+    i4: 72
+    i5: 109
+    i6: 235
+    i7: 100
+    i8: 232
+    i9: 46
+    i10: 249
+    i11: 225
+    i12: 109
+    i13: 223
+    i14: 50
+    i15: 35
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114946448739496022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,6 +122,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+--- !u!114 &114965694284747776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1965822159106628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95042017733087148}
+  m_ParameterSendBits: 0
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!212 &212389827090071892
 SpriteRenderer:
   m_ObjectHideFlags: 1

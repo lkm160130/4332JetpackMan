@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class TestLevelManager : MonoBehaviour {
+public class TestLevelManager : NetworkBehaviour
+{
 
 
 	// Use this for initialization

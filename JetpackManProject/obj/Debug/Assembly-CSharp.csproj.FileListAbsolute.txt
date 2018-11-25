@@ -94,7 +94,6 @@ C:\Users\Logan\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\
 C:\Users\Logan\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\Boo.Lang.PatternMatching.dll
 C:\Users\Logan\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\Boo.Lang.Useful.dll
 C:\Users\Logan\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\Unity.CecilTools.dll
-C:\Users\Logan\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
 C:\Users\Logan\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\UnityEngine.xml
 C:\Users\Logan\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\UnityEditor.xml
 C:\Users\Logan\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\UnityEngine.AIModule.xml

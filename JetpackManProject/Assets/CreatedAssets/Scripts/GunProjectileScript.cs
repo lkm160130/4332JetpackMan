@@ -1,35 +1,54 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+
 namespace UnityStandardAssets._2D {
-    public class GunProjectileScript : MonoBehaviour {
+    public class GunProjectileScript : MonoBehaviour
+    {
         Rigidbody2D rBody;
 
         [SerializeField] float projectileSpeed = .05f;
-        
-        // Use this for initialization
-        void Start()
-        {
 
+        // Use this for initialization
+
+
+
+
+
+
+
+
+
+
+        private void Start()
+        {
+            //hello
+
+
+
+            //hello
             rBody = GetComponent<Rigidbody2D>();
-            if (GetComponent<Transform>().position.x < GameObject.Find("Barry").transform.position.x) { 
+            if (GetComponent<Transform>().position.x < GameObject.Find("Barry(Clone)").transform.position.x) { 
             rBody.velocity = new Vector2(-projectileSpeed, 0);
-                Debug.Log(GetComponent<Transform>().position.x + " < " + GameObject.Find("Barry").transform.position.x);
+                
             Flip();
             }
             else
             {
                 rBody.velocity = new Vector2(projectileSpeed, 0);
-                Debug.Log(GetComponent<Transform>().position.x + " < " + GameObject.Find("Barry").transform.position.x);
+               
             }
 			StartCoroutine(ProjectileTimeOut());
         }
+
+        
 
 
 
         // Update is called once per frame
         void Update() {
-
+            
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
