@@ -7,7 +7,7 @@ namespace UnityStandardAssets._2D
     public class GroundEnemyScript : NetworkBehaviour
     {
         private Animator mAnim;
-        GameObject player;
+        GameObject[] players;
         [SerializeField] float moveSpeed = 5;
         bool facingLeft = true;
         int noticeDistance;
@@ -23,7 +23,7 @@ namespace UnityStandardAssets._2D
         {
             noticeDistance = paciveDistance;
             mAnim = GetComponent<Animator>();
-            player = GameObject.Find("Barry");
+            players = GameObject.FindGameObjectsWithTag("Player");
             Rigidbody2D rbod = GetComponent<Rigidbody2D>();
         }
 
@@ -35,7 +35,7 @@ namespace UnityStandardAssets._2D
 
         void Move()
         {
-
+            GameObject player = getClosestPlayer(gameObject.transform);
             mAnim.SetFloat("Speed", GetComponent<Rigidbody2D>().velocity.magnitude);
             if(Vector2.Distance(player.transform.position, gameObject.transform.position) < noticeDistance)
             {
@@ -127,6 +127,22 @@ namespace UnityStandardAssets._2D
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
+        }
+
+        GameObject getClosestPlayer(Transform point)
+        {
+            double shortestDistance = double.MaxValue;
+            GameObject closestObject = players[0];
+            for (int i = 0; i < players.Length; i++) {
+                double distance = System.Math.Pow(players[i].transform.position.x - point.position.x, 2) + System.Math.Pow(players[i].transform.position.y - point.position.y, 2);
+
+                if(distance < shortestDistance)
+                {
+                    shortestDistance = distance;
+                    closestObject = players[i];
+                }
+            }
+            return closestObject;
         }
     }
 }

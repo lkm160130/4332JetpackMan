@@ -16,8 +16,8 @@ namespace UnityStandardAssets._2D
             
             if (collidedObject.tag == "Player")
             {
-                BarryCharacter.setGunTrue();
-               
+                collidedObject.gameObject.GetComponent<BarryCharacter>().setGunTrue();
+
                 Destroy(gameObject);
             }
         }

@@ -21,12 +21,24 @@ namespace UnityStandardAssets._2D
 
         private void Update()
         {
-            
-                // Read the inputs.
+            float h;
+            bool attack;
+            if (!isLocalPlayer)
+            {//only take input if we are local player
+
+                fly = 0;
+                h = 0;
+                attack = false;
+
+            }
+            // Read the inputs.
+            else
+            {
                 fly = Input.GetAxis("Vertical");
                 //bool crouch = Input.GetKey(KeyCode.LeftControl);
-                float h = Input.GetAxis("Horizontal");
-                bool attack = Input.GetButtonDown("Fire1");
+                h = Input.GetAxis("Horizontal");
+                attack = Input.GetButtonDown("Fire1");
+            }
 
                 // Pass all parameters to the character control script.
                 m_Character.Move(h, attack, fly);

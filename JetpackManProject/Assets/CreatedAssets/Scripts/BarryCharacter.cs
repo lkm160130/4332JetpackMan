@@ -40,7 +40,7 @@ namespace UnityStandardAssets._2D
         private Transform m_CeilingCheck;   // A position marking where to check for ceilings
         const float k_CeilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
         private Animator m_Anim;            // Reference to the player's animator component.
-        static private NetworkAnimator networkAnimator;
+        private NetworkAnimator networkAnimator;
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 
@@ -80,7 +80,7 @@ namespace UnityStandardAssets._2D
                 {
                     case "cave_1":
                         
-                        gameObject.transform.position = new Vector3(5, 10, 0);
+                        gameObject.transform.position = new Vector3(-59, 18, 0);
                         break;
                     case "cave_2":
                         
@@ -281,7 +281,7 @@ namespace UnityStandardAssets._2D
            Instantiate(projectile, new Vector3(GetComponent<Transform>().localPosition.x + x, GetComponent<Transform>().localPosition.y + y), Quaternion.identity);
         }
 
-        static public void setGunTrue()
+        public void setGunTrue()
         {
             gun = true;
             plain = false;
@@ -290,7 +290,7 @@ namespace UnityStandardAssets._2D
             networkAnimator.animator.SetBool("Gun", true);
             networkAnimator.animator.SetBool("Plain", false);
         }
-        static public void setPlainTrue()
+        public void setPlainTrue()
         {
             gun = false;
             plain = true;
@@ -299,7 +299,7 @@ namespace UnityStandardAssets._2D
             networkAnimator.animator.SetBool("Gun", false);
             networkAnimator.animator.SetBool("Plain", true);
         }
-        static public void setSwordTrue()
+        public void setSwordTrue()
         {
             gun = false;
             plain = false;
@@ -423,15 +423,15 @@ namespace UnityStandardAssets._2D
                     break;
                 case "cave_2":
                     NetworkManager.singleton.ServerChangeScene("cave_2");
-                    GameManagerScript.scene = "cave_1";
+                    GameManagerScript.scene = "cave_2";
                     break;
                 case "cave_3":
                     NetworkManager.singleton.ServerChangeScene("cave_3");
-                    GameManagerScript.scene = "cave_1";
+                    GameManagerScript.scene = "cave_3";
                     break;
                 case "cave_4":
                     NetworkManager.singleton.ServerChangeScene("cave_4");
-                    GameManagerScript.scene = "cave_1";
+                    GameManagerScript.scene = "cave_4";
                     break;
                 case "cave_5":
 

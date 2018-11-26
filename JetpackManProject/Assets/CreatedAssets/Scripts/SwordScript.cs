@@ -13,7 +13,8 @@ public class SwordScript : NetworkBehaviour
 
         if (collidedObject.tag == "Player")
         {
-            BarryCharacter.setSwordTrue();
+                
+            collidedObject.gameObject.GetComponent<BarryCharacter>().setSwordTrue();
 
             Destroy(gameObject);
         }
