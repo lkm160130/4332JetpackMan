@@ -7,8 +7,8 @@ namespace UnityStandardAssets._2D
     public class FlyingEnemyScript : NetworkBehaviour
     {
         Animator mAnim;
-        GameObject player;
-        [SerializeField] float moveSpeed = 5;
+        GameObject[] players;
+        [SerializeField] float moveSpeed = 7;
         bool facingLeft = true;
         int noticeDistance;
         [SerializeField] int aggresiveDistance = 50;
@@ -20,7 +20,7 @@ namespace UnityStandardAssets._2D
         {
             noticeDistance = paciveDistance;
             mAnim = GetComponent<Animator>();
-            player = GameObject.Find("Barry");
+            players = GameObject.FindGameObjectsWithTag("Player");
         }
 
         // Update is called once per frame
@@ -31,6 +31,8 @@ namespace UnityStandardAssets._2D
 
         void Move()
         {
+
+            GameObject player = getClosestPlayer(gameObject.transform);
             if (Vector2.Distance(player.transform.position, gameObject.transform.position) < noticeDistance)
             {
                 noticeDistance = aggresiveDistance;
@@ -70,8 +72,8 @@ namespace UnityStandardAssets._2D
             if (collision.gameObject.tag == "Player")
             {
                 mAnim.SetBool("Attack", true);
-                
-                GameObject.Find("Barry").GetComponent<BarryCharacter>().TakeDamage();
+
+                collision.gameObject.GetComponent<BarryCharacter>().TakeDamage();
 
             }
         }
@@ -81,6 +83,22 @@ namespace UnityStandardAssets._2D
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
+        }
+        GameObject getClosestPlayer(Transform point)
+        {
+            double shortestDistance = double.MaxValue;
+            GameObject closestObject = players[0];
+            for (int i = 0; i < players.Length; i++)
+            {
+                double distance = System.Math.Pow(players[i].transform.position.x - point.position.x, 2) + System.Math.Pow(players[i].transform.position.y - point.position.y, 2);
+
+                if (distance < shortestDistance)
+                {
+                    shortestDistance = distance;
+                    closestObject = players[i];
+                }
+            }
+            return closestObject;
         }
     }
 }

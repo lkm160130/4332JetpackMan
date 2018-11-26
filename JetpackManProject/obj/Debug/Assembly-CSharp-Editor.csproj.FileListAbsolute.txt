@@ -23,7 +23,6 @@ C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\D
 C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\UnityEditor.UI.dll
 C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\UnityEditor.VR.dll
 C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\UnityEditor.WindowsStandalone.Extensions.dll
-C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\UnityEditor.WSA.Extensions.dll
 C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\UnityEngine.AccessibilityModule.dll
 C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\UnityEngine.AIModule.dll
 C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\UnityEngine.Analytics.dll
@@ -189,6 +188,15 @@ C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\D
 C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\UnityEngine.SpatialTracking.xml
 C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\UnityEditor.VR.xml
 C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\UnityEditor.iOS.Extensions.Xcode.xml
-C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\obj\Debug\Assembly-CSharp-Editor.csprojResolveAssemblyReference.cache
 C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\obj\Debug\Assembly-CSharp-Editor.dll
 C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\obj\Debug\Assembly-CSharp-Editor.pdb
+C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\SyntaxTree.VisualStudio.Unity.Bridge.dll
+C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\System.Core.dll
+C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\System.dll
+C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\System.Runtime.Serialization.dll
+C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\System.Xml.dll
+C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\System.Xml.Linq.dll
+C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\SyntaxTree.VisualStudio.Unity.Messaging.dll
+C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\obj\Debug\Assembly-CSharp-Editor.csprojAssemblyReference.cache
+C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\obj\Debug\Assembly-CSharp-Editor.csproj.CoreCompileInputs.cache
+C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\obj\Debug\Assembly-CSharp-Editor.csproj.CopyComplete

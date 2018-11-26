@@ -74,6 +74,7 @@
     <Compile Include="Assets\CreatedAssets\Scripts\TentacleScript.cs" />
     <Compile Include="Assets\CreatedAssets\Scripts\TestLevelManager.cs" />
     <Compile Include="Assets\GameManagerScript.cs" />
+    <Compile Include="Assets\Heart1.cs" />
     <Compile Include="Assets\KlakonSpawnTest.cs" />
     <Compile Include="Assets\OverWorldManagerScript.cs" />
     <Compile Include="Assets\PackageAssets\PixelMobs\Script\Ease.cs" />
@@ -120,6 +121,10 @@
     <Compile Include="Assets\PackageAssets\Standard Assets\Utility\TimedObjectDestructor.cs" />
     <Compile Include="Assets\PackageAssets\Standard Assets\Utility\WaypointCircuit.cs" />
     <Compile Include="Assets\PackageAssets\Standard Assets\Utility\WaypointProgressTracker.cs" />
+    <Compile Include="Assets\PartCount.cs" />
+    <Compile Include="Assets\PartSpawner.cs" />
+    <Compile Include="Assets\PlayerUI.cs" />
+    <Compile Include="Assets\ShipPart.cs" />
     <None Include="Assets\PackageAssets\Cave Platformer Tileset\readme.txt" />
     <None Include="Assets\PackageAssets\PixelMobs\ReadMe.txt" />
     <None Include="Assets\PackageAssets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />

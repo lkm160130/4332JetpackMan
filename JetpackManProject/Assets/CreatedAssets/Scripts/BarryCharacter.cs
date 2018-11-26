@@ -17,7 +17,7 @@ namespace UnityStandardAssets._2D
 
         [SerializeField] GameObject projectile;
         [SerializeField] GameObject jetpackFire;
-        [SerializeField] float damageDelayTime = 3;
+        [SerializeField] float damageDelayTime = 1.5f;
 
         public string currentScene = "OverWorld";
 
@@ -278,7 +278,7 @@ namespace UnityStandardAssets._2D
         
         public void createProjectile(float x, float y)
         {
-           Instantiate(projectile, new Vector3(GetComponent<Transform>().localPosition.x + x, GetComponent<Transform>().localPosition.y + y), Quaternion.identity);
+            Instantiate(projectile, new Vector3(GetComponent<Transform>().localPosition.x + x, GetComponent<Transform>().localPosition.y + y), Quaternion.identity);
         }
 
         public void setGunTrue()
@@ -320,6 +320,7 @@ namespace UnityStandardAssets._2D
         }
         public void TakeDamage()
         {
+            Debug.Log("Ouch!");
             int health;
             switch (1) {
                 case 1:
@@ -335,8 +336,8 @@ namespace UnityStandardAssets._2D
                         }
                         StartCoroutine(DamageDelay(damageDelayTime));
                     }
-            
-            
+
+                    
                    
                     break;
 

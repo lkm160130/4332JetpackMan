@@ -166,7 +166,6 @@ C:\Users\Logan\Documents\GitHub\4332JetpackMan\JetpackManProject\obj\Debug\Assem
 C:\Users\Logan\Documents\GitHub\4332JetpackMan\JetpackManProject\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\Logan\Documents\GitHub\4332JetpackMan\JetpackManProject\obj\Debug\Assembly-CSharp.dll
 C:\Users\Logan\Documents\GitHub\4332JetpackMan\JetpackManProject\obj\Debug\Assembly-CSharp.pdb
-C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\obj\Debug\Assembly-CSharp.dll
 C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\obj\Debug\Assembly-CSharp.pdb
 C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\Assembly-CSharp.dll
@@ -327,3 +326,11 @@ C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\D
 C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\UnityEngine.GoogleAudioSpatializer.xml
 C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\UnityEngine.HoloLens.xml
 C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\UnityEngine.SpatialTracking.xml
+C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\System.Core.dll
+C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\System.dll
+C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\System.Runtime.Serialization.dll
+C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\System.Xml.dll
+C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\Temp\bin\Debug\System.Xml.Linq.dll
+C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+C:\Users\Logan Moon\Documents\GitHub\4332JetpackMan\JetpackManProject\obj\Debug\Assembly-CSharp.csproj.CopyComplete
