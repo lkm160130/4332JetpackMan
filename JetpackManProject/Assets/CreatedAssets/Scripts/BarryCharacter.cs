@@ -51,16 +51,18 @@ namespace UnityStandardAssets._2D
 
         private void Awake()
         {
-            DontDestroyOnLoad(gameObject);
-            
-           
-           // Debug.Log("Test");
+
+
+             
+            // Debug.Log("Test");
             // Setting up references.
             m_GroundCheck = transform.Find("GroundCheck");
             m_CeilingCheck = transform.Find("CeilingCheck");
             m_Anim = GetComponent<Animator>();
             networkAnimator = gameObject.GetComponent<NetworkAnimator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
+                           
+        
         }
         private void Start()
         {
@@ -74,61 +76,9 @@ namespace UnityStandardAssets._2D
         
         private void Update()
         {
-            if(GameManagerScript.scene != currentScene)
-            {
-                Delay(5);
-                currentScene = GameManagerScript.scene;
+           
+
                 
-                switch (currentScene)
-                {
-                    case "cave_1":
-
-
-                        gameObject.transform.position = new Vector3(59, 11, 0);
-                        break;
-                    case "cave_2":
-                        
-                        gameObject.transform.position = new Vector3(54, 58, 0);
-                        break;
-                    case "cave_3":
-                        
-                        gameObject.transform.position = new Vector3(81, 100, 0);
-                        break;
-                    case "cave_4":
-                        
-                        gameObject.transform.position = new Vector3(54, 58, 0);
-                        break;
-                    case "cave_5":
-
-                        break;
-                    case "cave_6":
-
-                        break;
-                    case "cave_7":
-
-                        break;
-                    case "cave_8":
-
-                        break;
-                    case "OverWorld1":
-                        
-                        gameObject.transform.position = new Vector3(-21, -7, 0);
-                        break;
-                    case "OverWorld2":
-                        
-                        gameObject.transform.position = new Vector3(111, -7, 0);
-                        break;
-                    case "OverWorld3":
-                        
-                        gameObject.transform.position = new Vector3(243, -7, 0);
-                        break;
-                    case "OverWorld4":
-                        
-                        gameObject.transform.position = new Vector3(-153, -7, 0);
-                        break;
-
-                }
-            }
         }
 
         public bool getIsLocalPlayer()
@@ -188,7 +138,7 @@ namespace UnityStandardAssets._2D
                 else
                     this.fly = false;
 
-                if (!networkAnimator.animator.GetBool("Dying") && !m_Anim.GetBool("Dead"))
+                if (!m_Anim.GetBool("Dying") && !m_Anim.GetBool("Dead"))
                 {
 
 
@@ -399,48 +349,40 @@ namespace UnityStandardAssets._2D
             switch (collidedObject.name)
             {
                 case "cave_1":
-                    NetworkManager.singleton.ServerChangeScene("cave_1");
-                    GameManagerScript.scene = "cave_1";
+                    gameObject.transform.position = new Vector3(-246, -190, 0);
                     break;
                 case "cave_2":
-                    NetworkManager.singleton.ServerChangeScene("cave_2");
-                    GameManagerScript.scene = "cave_2";
+                    gameObject.transform.position = new Vector3(165, -296, 0);
                     break;
                 case "cave_3":
-                    NetworkManager.singleton.ServerChangeScene("cave_3");
-                    GameManagerScript.scene = "cave_3";
+                    gameObject.transform.position = new Vector3(-159, -190, 0);
                     break;
                 case "cave_4":
-                    NetworkManager.singleton.ServerChangeScene("cave_4");
-                    GameManagerScript.scene = "cave_4";
+                    gameObject.transform.position = new Vector3(-246, -190, 0);
                     break;
                 case "cave_5":
-
+                    gameObject.transform.position = new Vector3(-246, -190, 0);
                     break;
                 case "cave_6":
-
+                    gameObject.transform.position = new Vector3(-246, -190, 0);
                     break;
                 case "cave_7":
-
+                    gameObject.transform.position = new Vector3(-246, -190, 0);
                     break;
                 case "cave_8":
-
+                    gameObject.transform.position = new Vector3(-246, -190, 0);
                     break;
                 case "ExitCave1":
-                    NetworkManager.singleton.ServerChangeScene("OverWorld");
-                    GameManagerScript.scene = "OverWorld1";
+                    gameObject.transform.position = new Vector3(-15, -8, 0);
                     break;
                 case "ExitCave2":
-                    NetworkManager.singleton.ServerChangeScene("OverWorld");
-                    GameManagerScript.scene = "OverWorld2";
+                    gameObject.transform.position = new Vector3(105, -8, 0);
                     break;
                 case "ExitCave3":
-                    NetworkManager.singleton.ServerChangeScene("OverWorld");
-                    GameManagerScript.scene = "OverWorld3";
+                    gameObject.transform.position = new Vector3(236, -8, 0);
                     break;
                 case "ExitCave4":
-                    NetworkManager.singleton.ServerChangeScene("OverWorld");
-                    GameManagerScript.scene = "OverWorld4";
+                    gameObject.transform.position = new Vector3(-146, -8, 0);
                     break;
                     
             }

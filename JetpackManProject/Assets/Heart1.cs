@@ -18,7 +18,7 @@ namespace UnityStandardAssets._2D
         // Update is called once per frame
         void Update()
         {
-
+            Debug.Log(transform.parent.gameObject.transform.parent.gameObject.GetComponent<BarryCharacter>().BarryHealth);
             int playerHealth = transform.parent.gameObject.transform.parent.gameObject.GetComponent<BarryCharacter>().BarryHealth;
             if (playerHealth < changeNum)
             {

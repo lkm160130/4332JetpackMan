@@ -23,42 +23,49 @@ namespace UnityStandardAssets._2D
         {
             noticeDistance = paciveDistance;
             mAnim = GetComponent<Animator>();
-            players = GameObject.FindGameObjectsWithTag("Player");
+            
             Rigidbody2D rbod = GetComponent<Rigidbody2D>();
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            players = GameObject.FindGameObjectsWithTag("Player");
         }
 
         void Move()
         {
-            GameObject player = getClosestPlayer(gameObject.transform);
-            mAnim.SetFloat("Speed", GetComponent<Rigidbody2D>().velocity.magnitude);
-            if(Vector2.Distance(player.transform.position, gameObject.transform.position) < noticeDistance)
+            try
             {
+                GameObject player = getClosestPlayer(gameObject.transform);
+                mAnim.SetFloat("Speed", GetComponent<Rigidbody2D>().velocity.magnitude);
+                if (Vector2.Distance(player.transform.position, gameObject.transform.position) < noticeDistance)
+                {
 
-                noticeDistance = aggresiveDistance;
-                GetComponent<Rigidbody2D>().velocity = new Vector2((player.transform.position.x - gameObject.transform.position.x > 0) ? 
-                    (cantGoRight) ? 0: moveSpeed : (cantGoLeft) ? 0: -moveSpeed , GetComponent<Rigidbody2D>().velocity.y);
-            }
-            else
-            {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-                noticeDistance = paciveDistance;
-            }
+                    noticeDistance = aggresiveDistance;
+                    GetComponent<Rigidbody2D>().velocity = new Vector2((player.transform.position.x - gameObject.transform.position.x > 0) ?
+                        (cantGoRight) ? 0 : moveSpeed : (cantGoLeft) ? 0 : -moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+                }
+                else
+                {
+                    GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                    noticeDistance = paciveDistance;
+                }
 
-            if(player.transform.position.x > gameObject.transform.position.x && facingLeft)
-            {
-                Flip();
-                facingLeft = false;
+                if (player.transform.position.x > gameObject.transform.position.x && facingLeft)
+                {
+                    Flip();
+                    facingLeft = false;
+                }
+                else if (player.transform.position.x < gameObject.transform.position.x && !facingLeft)
+                {
+                    Flip();
+                    facingLeft = true;
+                }
             }
-            else if(player.transform.position.x < gameObject.transform.position.x && !facingLeft)
+            catch (System.NullReferenceException)
             {
-                Flip();
-                facingLeft = true;
+                Debug.Log("NullReferenceException. Fine if player not spawned yet.");
             }
         }
 
@@ -131,18 +138,28 @@ namespace UnityStandardAssets._2D
 
         GameObject getClosestPlayer(Transform point)
         {
-            double shortestDistance = double.MaxValue;
-            GameObject closestObject = players[0];
-            for (int i = 0; i < players.Length; i++) {
-                double distance = System.Math.Pow(players[i].transform.position.x - point.position.x, 2) + System.Math.Pow(players[i].transform.position.y - point.position.y, 2);
-
-                if(distance < shortestDistance)
+            GameObject closestObject;
+            try
+            {
+                double shortestDistance = double.MaxValue;
+                closestObject = players[0];
+                for (int i = 0; i < players.Length; i++)
                 {
-                    shortestDistance = distance;
-                    closestObject = players[i];
+                    double distance = System.Math.Pow(players[i].transform.position.x - point.position.x, 2) + System.Math.Pow(players[i].transform.position.y - point.position.y, 2);
+
+                    if (distance < shortestDistance)
+                    {
+                        shortestDistance = distance;
+                        closestObject = players[i];
+                    }
                 }
+                return closestObject;
             }
-            return closestObject;
+            catch (System.IndexOutOfRangeException e)
+            {
+                Debug.Log("No Players Spawned Yet");
+                return null;
+            }
         }
     }
 }

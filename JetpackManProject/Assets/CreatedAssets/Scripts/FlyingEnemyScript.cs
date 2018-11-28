@@ -20,40 +20,46 @@ namespace UnityStandardAssets._2D
         {
             noticeDistance = paciveDistance;
             mAnim = GetComponent<Animator>();
-            players = GameObject.FindGameObjectsWithTag("Player");
+           
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            players = GameObject.FindGameObjectsWithTag("Player");
         }
 
         void Move()
         {
+            try
+            {
+                GameObject player = getClosestPlayer(gameObject.transform);
+                if (Vector2.Distance(player.transform.position, gameObject.transform.position) < noticeDistance)
+                {
+                    noticeDistance = aggresiveDistance;
+                    GetComponent<Rigidbody2D>().velocity = new Vector2(player.transform.position.x - gameObject.transform.position.x,
+                        player.transform.position.y - gameObject.transform.position.y).normalized * moveSpeed;
+                }
+                else
+                {
+                    GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                    noticeDistance = paciveDistance;
+                }
 
-            GameObject player = getClosestPlayer(gameObject.transform);
-            if (Vector2.Distance(player.transform.position, gameObject.transform.position) < noticeDistance)
-            {
-                noticeDistance = aggresiveDistance;
-                GetComponent<Rigidbody2D>().velocity = new Vector2(player.transform.position.x - gameObject.transform.position.x,
-                    player.transform.position.y - gameObject.transform.position.y).normalized * moveSpeed;
+                if (player.transform.position.x > gameObject.transform.position.x && facingLeft)
+                {
+                    Flip();
+                    facingLeft = false;
+                }
+                else if (player.transform.position.x < gameObject.transform.position.x && !facingLeft)
+                {
+                    Flip();
+                    facingLeft = true;
+                }
             }
-            else
+            catch (System.NullReferenceException)
             {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-                noticeDistance = paciveDistance;
-            }
-
-            if (player.transform.position.x > gameObject.transform.position.x && facingLeft)
-            {
-                Flip();
-                facingLeft = false;
-            }
-            else if (player.transform.position.x < gameObject.transform.position.x && !facingLeft)
-            {
-                Flip();
-                facingLeft = true;
+                Debug.Log("NullReferenceException. Fine if player not spawned yet");
             }
         }
 
@@ -86,19 +92,28 @@ namespace UnityStandardAssets._2D
         }
         GameObject getClosestPlayer(Transform point)
         {
-            double shortestDistance = double.MaxValue;
-            GameObject closestObject = players[0];
-            for (int i = 0; i < players.Length; i++)
+            GameObject closestObject;
+            try
             {
-                double distance = System.Math.Pow(players[i].transform.position.x - point.position.x, 2) + System.Math.Pow(players[i].transform.position.y - point.position.y, 2);
-
-                if (distance < shortestDistance)
+                double shortestDistance = double.MaxValue;
+                 closestObject = players[0];
+                for (int i = 0; i < players.Length; i++)
                 {
-                    shortestDistance = distance;
-                    closestObject = players[i];
+                    double distance = System.Math.Pow(players[i].transform.position.x - point.position.x, 2) + System.Math.Pow(players[i].transform.position.y - point.position.y, 2);
+
+                    if (distance < shortestDistance)
+                    {
+                        shortestDistance = distance;
+                        closestObject = players[i];
+                    }
                 }
+                return closestObject;
             }
-            return closestObject;
+            catch(System.IndexOutOfRangeException e)
+            {
+                Debug.Log("No Players Spawned Yet");
+                return null;
+            }
         }
     }
 }
