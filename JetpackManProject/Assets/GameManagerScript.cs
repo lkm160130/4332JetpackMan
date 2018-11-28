@@ -5,10 +5,10 @@ using UnityEngine.Networking;
 
 public class GameManagerScript : NetworkBehaviour
 {
-    [SerializeField] public static int P1Health = 3;
-    [SerializeField] public static int P2Health = 3;
-    [SerializeField] public static int P3Health = 3;
-    [SerializeField] public static int P4Health = 3;
+    //[SerializeField] public static int P1Health = 3;
+    //[SerializeField] public static int P2Health = 3;
+   // [SerializeField] public static int P3Health = 3;
+    //[SerializeField] public static int P4Health = 3;
 
     public static string scene = "OverWorld";
 

@@ -12,12 +12,12 @@ public class PlayerUI : NetworkBehaviour {
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+       // DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
     void Update () {
-        int playerHealth = GameManagerScript.P1Health;
+        
         
 	}
 }

@@ -112,7 +112,7 @@ namespace UnityStandardAssets._2D
             {
                 mAnim.SetBool("Attack", true);
                 Debug.Log("Triggered");
-                GameObject.Find("Barry").GetComponent<BarryCharacter>().TakeDamage();
+                collision.gameObject.GetComponent<BarryCharacter>().TakeDamage();
 
             }
             if (collision.gameObject.tag == "Environment")

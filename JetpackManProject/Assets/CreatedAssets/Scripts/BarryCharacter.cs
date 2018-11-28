@@ -19,6 +19,8 @@ namespace UnityStandardAssets._2D
         [SerializeField] GameObject jetpackFire;
         [SerializeField] float damageDelayTime = 1.5f;
 
+        public int BarryHealth = 3;
+
         public string currentScene = "OverWorld";
 
         Boolean canTakeDamage = true;
@@ -28,11 +30,11 @@ namespace UnityStandardAssets._2D
         private bool fly;
 
  
-        static public bool plain = true;
+         public bool plain = true;
 
-        static public bool gun = false;
+         public bool gun = false;
 
-        static public bool sword = false;
+         public bool sword = false;
 
         private Transform m_GroundCheck;    // A position marking where to check if the player is grounded.
         const float k_GroundedRadius = .7f; // Radius of the overlap circle to determine if grounded
@@ -56,7 +58,7 @@ namespace UnityStandardAssets._2D
             // Setting up references.
             m_GroundCheck = transform.Find("GroundCheck");
             m_CeilingCheck = transform.Find("CeilingCheck");
-            m_Anim = this.GetComponent<Animator>();
+            m_Anim = GetComponent<Animator>();
             networkAnimator = gameObject.GetComponent<NetworkAnimator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
         }
@@ -69,18 +71,20 @@ namespace UnityStandardAssets._2D
             
             Debug.Log("anim instance" + m_Anim.GetInstanceID());
         }
-
+        
         private void Update()
         {
             if(GameManagerScript.scene != currentScene)
             {
+                Delay(5);
                 currentScene = GameManagerScript.scene;
                 
                 switch (currentScene)
                 {
                     case "cave_1":
-                        
-                        gameObject.transform.position = new Vector3(-59, 18, 0);
+
+
+                        gameObject.transform.position = new Vector3(59, 11, 0);
                         break;
                     case "cave_2":
                         
@@ -127,111 +131,131 @@ namespace UnityStandardAssets._2D
             }
         }
 
+        public bool getIsLocalPlayer()
+        {
+            return isLocalPlayer;
+        }
+
 
         private void FixedUpdate()
         {
-            pastX = currentX;
-            currentX = transform.position.x;
-            m_Grounded = false;
+            
+                pastX = currentX;
+                currentX = transform.position.x;
+                m_Grounded = false;
 
-            // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-            // This can be done using layers instead but Sample Assets will not overwrite your project settings.
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-            for (int i = 0; i < colliders.Length; i++)
-            {
-                if (colliders[i].gameObject.tag == "Environment")
-                    m_Grounded = true;
-            }
-            m_Anim.SetBool("Ground", m_Grounded);
+                // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
+                // This can be done using layers instead but Sample Assets will not overwrite your project settings.
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
+                for (int i = 0; i < colliders.Length; i++)
+                {
+                    if (colliders[i].gameObject.tag == "Environment")
+                        m_Grounded = true;
+                }
+                m_Anim.SetBool("Ground", m_Grounded);
 
-            // Set the vertical animation
-            m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
+                // Set the vertical animation
+                m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
 
-            if (!m_Anim.GetBool("Ground"))
-            {
-                //create thrust animation 
-            }
-
+                if (!m_Anim.GetBool("Ground"))
+                {
+                    //create thrust animation 
+                }
+            
            // Debug.Log(GameManagerScript.P1Health);
         }
 
 
         public void Move(float move, bool attack, float fly)
         {
-            
-            if (fly > .1f)
-                this.fly = true;
-            else
-                this.fly = false;
+            if (currentX > pastX + .001 && !m_FacingRight)
+            {
+                // ... flip the player.
+                Flip();
+            }
+            // Otherwise if the input is moving the player left and the player is facing right...
+            else if (currentX + .001 < pastX && m_FacingRight)
+            {
+                // ... flip the player.
+                Flip();
+            }
 
-            if (!networkAnimator.animator.GetBool("Dying") && !m_Anim.GetBool("Dead"))
+            if (isLocalPlayer)
             {
 
+                if (fly > .1f)
+                    this.fly = true;
+                else
+                    this.fly = false;
 
-                //only control the player if grounded or airControl is turned on
-                if (m_Grounded || m_AirControl)
+                if (!networkAnimator.animator.GetBool("Dying") && !m_Anim.GetBool("Dead"))
                 {
-                    // Reduce the speed if crouching by the crouchSpeed multiplier
 
 
-                    // The Speed animator parameter is set to the absolute value of the horizontal input.
-                    networkAnimator.animator.SetFloat("Speed", Mathf.Abs(m_Rigidbody2D.velocity.x));
-
-                    // Move the character
-                    if (fly > 0.1)
+                    //only control the player if grounded or airControl is turned on
+                    if (m_Grounded || m_AirControl)
                     {
-                        
+                        // Reduce the speed if crouching by the crouchSpeed multiplier
+
+
+                        // The Speed animator parameter is set to the absolute value of the horizontal input.
+                        networkAnimator.animator.SetFloat("Speed", Mathf.Abs(m_Rigidbody2D.velocity.x));
+
+                        // Move the character
+                        if (fly > 0.1)
+                        {
+
                             m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, fly * m_MaxThrust); //[THIS]
+                        }
+                        else
+                        {
+                            m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, m_Rigidbody2D.velocity.y);
+                        }
+                        // If the input is moving the player right and the player is facing left...
+                        /*if (currentX > pastX + .001 && !m_FacingRight)
+                        {
+                            // ... flip the player.
+                            Flip();
+                        }
+                        // Otherwise if the input is moving the player left and the player is facing right...
+                        else if (currentX + .001 < pastX && m_FacingRight)
+                        {
+                            // ... flip the player.
+                            Flip();
+                        }*/
                     }
-                    else
-                    {
-                        m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, m_Rigidbody2D.velocity.y);
-                    }
-                    // If the input is moving the player right and the player is facing left...
-                    if (currentX > pastX + .001 && !m_FacingRight)
-                    {
-                        // ... flip the player.
-                        Flip();
-                    }
-                    // Otherwise if the input is moving the player left and the player is facing right...
-                    else if (currentX + .001 < pastX && m_FacingRight)
-                    {
-                        // ... flip the player.
-                        Flip();
-                    }
-                }
-                // If the player should jump...
-                // if (/*m_Grounded &&*/ fly /*&& m_Anim.GetBool("Ground")*/)
-                // {
-                //     // Add a vertical force to the player.
+                    // If the player should jump...
+                    // if (/*m_Grounded &&*/ fly /*&& m_Anim.GetBool("Ground")*/)
+                    // {
+                    //     // Add a vertical force to the player.
 
-                if (Math.Abs(fly) > 0.1)
-                    m_Grounded = false;
-                //     m_Anim.SetBool("Ground", false);
-                //     m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-                // }
-                if (!gun && !sword)
-                {
-                    plain = true;
-                    networkAnimator.animator.SetBool("Plain", plain);
-                }
-                if (attack && gun)
-                {
-                    StartCoroutine(fireGun());
-                }
-                if (attack && sword)
-                {
-                    StartCoroutine(SwingSword());
+                    if (Math.Abs(fly) > 0.1)
+                        m_Grounded = false;
+                    //     m_Anim.SetBool("Ground", false);
+                    //     m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+                    // }
+                    if (!gun && !sword)
+                    {
+                        plain = true;
+                        networkAnimator.animator.SetBool("Plain", plain);
+                    }
+                    if (attack && gun)
+                    {
+                        StartCoroutine(fireGun());
+                    }
+                    if (attack && sword)
+                    {
+                        StartCoroutine(SwingSword());
+
+                    }
 
                 }
-
+                else
+                {
+                    if (m_Grounded)
+                        m_Rigidbody2D.velocity = Vector2.zero;
+                }
             }
-            else
-            {
-                if (m_Grounded)
-                    m_Rigidbody2D.velocity = Vector2.zero;
-            }
-
         }
 
         private IEnumerator SwingSword()
@@ -320,72 +344,28 @@ namespace UnityStandardAssets._2D
         }
         public void TakeDamage()
         {
-            Debug.Log("Ouch!");
-            int health;
-            switch (1) {
-                case 1:
-                    if (canTakeDamage)
+            if (isLocalPlayer)
+            {
+                Debug.Log("Ouch!");
+                int health;
+
+                if (canTakeDamage)
+                {
+                    canTakeDamage = false;
+                    BarryHealth--;
+                    health = BarryHealth;
+                    if (health <= 0)
                     {
-                        canTakeDamage = false;
-                        GameManagerScript.P1Health--;
-                        health = GameManagerScript.P1Health;
-                        if (health <= 0)
-                        {
 
-                            StartCoroutine(DeathAnim());
-                        }
-                        StartCoroutine(DamageDelay(damageDelayTime));
+                        StartCoroutine(DeathAnim());
                     }
+                    StartCoroutine(DamageDelay(damageDelayTime));
+                }
 
-                    
-                   
-                    break;
 
-                case 2:
-                    if (canTakeDamage)
-                    {
-                        canTakeDamage = false;
-                        GameManagerScript.P2Health--;
-                        health = GameManagerScript.P1Health;
-                        if (health <= 0)
-                        {
 
-                            StartCoroutine(DeathAnim());
-                        }
-                        StartCoroutine(DamageDelay(damageDelayTime));
-                    }
-
-                case 3:
-                    if (canTakeDamage)
-                    {
-                        canTakeDamage = false;
-                        GameManagerScript.P3Health--;
-                        health = GameManagerScript.P1Health;
-                        if (health <= 0)
-                        {
-
-                            StartCoroutine(DeathAnim());
-                        }
-                        StartCoroutine(DamageDelay(damageDelayTime));
-                    }
-                case 4:
-                    if (canTakeDamage)
-                    {
-                        canTakeDamage = false;
-                        GameManagerScript.P4Health--;
-                        health = GameManagerScript.P1Health;
-                        if (health <= 0)
-                        {
-
-                            StartCoroutine(DeathAnim());
-                        }
-                        StartCoroutine(DamageDelay(damageDelayTime));
-                    }
-
+                Debug.Log("Ouch!");
             }
-          
-            Debug.Log("Ouch!");
-            
         }
         IEnumerator DeathAnim()
         {
@@ -471,6 +451,11 @@ namespace UnityStandardAssets._2D
         {
             yield return new WaitForSeconds(delayTime);
         canTakeDamage = true;
+        }
+        IEnumerator Delay(float delayTime)
+        {
+            yield return new WaitForSeconds(delayTime);
+            
         }
     }
 }
