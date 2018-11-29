@@ -10,6 +10,7 @@ TagManager:
   - Environment
   - BoundaryCollider
   - GameOver
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX

@@ -18,7 +18,7 @@ namespace UnityStandardAssets._2D
 
         public void Restart()
         {
-            NetworkManager.singleton.ServerChangeScene("OverWorld");
+            
 
             GameManagerScript.partsCollected = 0;
             GameManagerScript.part1 = false;
@@ -26,7 +26,16 @@ namespace UnityStandardAssets._2D
             GameManagerScript.part3 = false;
             GameManagerScript.part4 = false;
             GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-            
+            for(int i = 0; i < players.Length; i++)
+            {
+                players[i].transform.position = Vector3.zero;
+                players[i].GetComponent<BarryCharacter>().BarryHealth = 3;
+                players[i].GetComponent<Animator>().SetBool("Dead", false);
+                players[i].GetComponent<Animator>().SetBool("Dying", false);
+                players[i].GetComponent<Animator>().SetBool("Gun", false);
+            }
+            //GameManagerScript.KillAllEnemies();
+            //GameManagerScript.SpawnAllEnemies();
             GameObject.FindGameObjectWithTag("GameOver").GetComponent<Canvas>().enabled = false;
 
         }

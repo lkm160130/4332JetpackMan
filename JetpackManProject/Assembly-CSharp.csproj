@@ -73,6 +73,7 @@
     <Compile Include="Assets\CreatedAssets\Scripts\SwordScript.cs" />
     <Compile Include="Assets\CreatedAssets\Scripts\TentacleScript.cs" />
     <Compile Include="Assets\CreatedAssets\Scripts\TestLevelManager.cs" />
+    <Compile Include="Assets\EnemySpawner.cs" />
     <Compile Include="Assets\EventSystemScrips.cs" />
     <Compile Include="Assets\GameManagerScript.cs" />
     <Compile Include="Assets\Heart1.cs" />

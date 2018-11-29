@@ -52,8 +52,8 @@ namespace UnityStandardAssets._2D
         private void Awake()
         {
 
+
             
-             
             // Debug.Log("Test");
             // Setting up references.
             m_GroundCheck = transform.Find("GroundCheck");
@@ -76,6 +76,7 @@ namespace UnityStandardAssets._2D
         
         private void Update()
         {
+            
            if(BarryHealth <= 0)
             {   
                 GameObject.FindGameObjectWithTag("GameOver").GetComponent<Canvas>().enabled = true;
@@ -339,18 +340,26 @@ namespace UnityStandardAssets._2D
             { GameObject o;
                 if (fly)
                 {
-                    if (!m_FacingRight)
-                         Instantiate(jetpackFire, new Vector3(GetComponent<Transform>().localPosition.x + 1.3f, GetComponent<Transform>().localPosition.y - .3f), Quaternion.identity);
-                    else
-                         Instantiate(jetpackFire, new Vector3(GetComponent<Transform>().localPosition.x - .2f, GetComponent<Transform>().localPosition.y - .3f), Quaternion.identity);
-
-                   // NetworkServer.Spawn(o);
+                    CmdCreateFire();
                 }
                 yield return new WaitForSeconds(.05f);
 
 
             }
         }
+
+        [Command]
+        public void CmdCreateFire()
+        {
+            GameObject o;
+            if (!m_FacingRight)
+               o = Instantiate(jetpackFire, new Vector3(GetComponent<Transform>().localPosition.x + 1.3f, GetComponent<Transform>().localPosition.y - .3f), Quaternion.identity);
+            else
+               o = Instantiate(jetpackFire, new Vector3(GetComponent<Transform>().localPosition.x - .2f, GetComponent<Transform>().localPosition.y - .3f), Quaternion.identity);
+            
+            NetworkServer.Spawn(o);
+        }
+
         void OnTriggerEnter2D(Collider2D collidedObject)
         {
            // Debug.Log("triggered!!!1");
