@@ -16,6 +16,6 @@ public class EventSystemScrips : MonoBehaviour {
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+
     }
 }

@@ -425,5 +425,10 @@ namespace UnityStandardAssets._2D
             yield return new WaitForSeconds(delayTime);
             
         }
+
+        public void resetPosition()
+        {
+            transform.position = GameObject.Find("Respawn").transform.position;
+        }
     }
 }

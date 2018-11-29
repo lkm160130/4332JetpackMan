@@ -15,12 +15,13 @@ namespace UnityStandardAssets._2D
         void Update() {
 
         }
-
-        public void Restart()
+        [ClientRpc]
+        public void RpcRestart()
         {
             
 
             GameManagerScript.partsCollected = 0;
+            
             GameManagerScript.part1 = false;
             GameManagerScript.part2 = false;
             GameManagerScript.part3 = false;
@@ -28,15 +29,16 @@ namespace UnityStandardAssets._2D
             GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
             for(int i = 0; i < players.Length; i++)
             {
-                players[i].transform.position = Vector3.zero;
+                players[i].GetComponent<BarryCharacter>().resetPosition();
                 players[i].GetComponent<BarryCharacter>().BarryHealth = 3;
                 players[i].GetComponent<Animator>().SetBool("Dead", false);
                 players[i].GetComponent<Animator>().SetBool("Dying", false);
                 players[i].GetComponent<Animator>().SetBool("Gun", false);
             }
-            //GameManagerScript.KillAllEnemies();
-            //GameManagerScript.SpawnAllEnemies();
+            GameManagerScript.KillAllEnemies();
+            GameManagerScript.SpawnAllEnemies();
             GameObject.FindGameObjectWithTag("GameOver").GetComponent<Canvas>().enabled = false;
+
 
         }
 
