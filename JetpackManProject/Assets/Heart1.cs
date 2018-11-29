@@ -7,6 +7,7 @@ namespace UnityStandardAssets._2D
     public class Heart1 : MonoBehaviour
     {
         [SerializeField] Sprite newImg;
+        [SerializeField] Sprite startImg;
         [SerializeField] int changeNum;
 
         // Use this for initialization
@@ -18,12 +19,16 @@ namespace UnityStandardAssets._2D
         // Update is called once per frame
         void Update()
         {
-            Debug.Log(transform.parent.gameObject.transform.parent.gameObject.GetComponent<BarryCharacter>().BarryHealth);
+
             int playerHealth = transform.parent.gameObject.transform.parent.gameObject.GetComponent<BarryCharacter>().BarryHealth;
             if (playerHealth < changeNum)
             {
 
                 GetComponent<Image>().sprite = newImg;
+            }
+            else
+            {
+                GetComponent<Image>().sprite = startImg;
             }
         }
     }

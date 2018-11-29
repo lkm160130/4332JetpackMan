@@ -125,6 +125,7 @@
     <Compile Include="Assets\PartCount.cs" />
     <Compile Include="Assets\PartSpawner.cs" />
     <Compile Include="Assets\PlayerUI.cs" />
+    <Compile Include="Assets\restart.cs" />
     <Compile Include="Assets\ShipPart.cs" />
     <None Include="Assets\PackageAssets\Cave Platformer Tileset\readme.txt" />
     <None Include="Assets\PackageAssets\PixelMobs\ReadMe.txt" />

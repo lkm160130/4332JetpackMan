@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Environment
   - BoundaryCollider
+  - GameOver
   layers:
   - Default
   - TransparentFX

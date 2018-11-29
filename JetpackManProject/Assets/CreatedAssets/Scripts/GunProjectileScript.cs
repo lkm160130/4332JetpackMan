@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 
 namespace UnityStandardAssets._2D {
-    public class GunProjectileScript : MonoBehaviour
+    public class GunProjectileScript : NetworkBehaviour
     {
         Rigidbody2D rBody;
+        public GameObject shooter;
 
         [SerializeField] float projectileSpeed = .05f;
 
@@ -29,26 +31,26 @@ namespace UnityStandardAssets._2D {
 
             //hello
             rBody = GetComponent<Rigidbody2D>();
-            if (GetComponent<Transform>().position.x < GameObject.Find("Barry(Clone)").transform.position.x) { 
-            rBody.velocity = new Vector2(-projectileSpeed, 0);
-                
-            Flip();
+            if (GetComponent<Transform>().position.x < shooter.transform.position.x) {
+                rBody.velocity = new Vector2(-projectileSpeed, 0);
+
+                Flip();
             }
             else
             {
                 rBody.velocity = new Vector2(projectileSpeed, 0);
-               
+
             }
-			StartCoroutine(ProjectileTimeOut());
+            StartCoroutine(ProjectileTimeOut());
         }
 
-        
+
 
 
 
         // Update is called once per frame
         void Update() {
-            
+
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -64,17 +66,18 @@ namespace UnityStandardAssets._2D {
             }
 
         }
-        public void Flip()
-        {
-            // Switch the way the player is labelled as facing.
-            
 
-            // Multiply the player's x local scale by -1.
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
+
+
+        // Switch the way the player is labelled as facing.
+        public void Flip() { 
+
+        // Multiply the player's x local scale by -1.
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
             transform.localScale = theScale;
-        }
-
+        
+            }
 		IEnumerator ProjectileTimeOut()
 		{
 			

@@ -52,7 +52,7 @@ namespace UnityStandardAssets._2D
         private void Awake()
         {
 
-
+            
              
             // Debug.Log("Test");
             // Setting up references.
@@ -76,7 +76,11 @@ namespace UnityStandardAssets._2D
         
         private void Update()
         {
-           
+           if(BarryHealth <= 0)
+            {   
+                GameObject.FindGameObjectWithTag("GameOver").GetComponent<Canvas>().enabled = true;
+            }
+
 
                 
         }
@@ -231,17 +235,17 @@ namespace UnityStandardAssets._2D
                 if (networkAnimator.animator.GetBool("Ground"))
                 {
                     if (m_FacingRight)
-                        createProjectile(3, -.2f);
+                        CmdCreateProjectile(3, -.2f);
                     else
-                        createProjectile(-3, -.2f);
+                        CmdCreateProjectile(-3, -.2f);
                     //fire in on ground position
                 }
                 else
                 {
                     if (m_FacingRight)
-                        createProjectile(3, -.4f);
+                        CmdCreateProjectile(3, -.4f);
                     else
-                        createProjectile(-3, -.4f);
+                        CmdCreateProjectile(-3, -.4f);
 
                 }
                 yield return new WaitForSeconds(0.2f);
@@ -249,10 +253,12 @@ namespace UnityStandardAssets._2D
             }
         }
 
-        
-        public void createProjectile(float x, float y)
-        {
-            Instantiate(projectile, new Vector3(GetComponent<Transform>().localPosition.x + x, GetComponent<Transform>().localPosition.y + y), Quaternion.identity);
+        [Command]
+        public void CmdCreateProjectile(float x, float y)
+        {   
+            GameObject o = Instantiate(projectile, new Vector3(GetComponent<Transform>().localPosition.x + x, GetComponent<Transform>().localPosition.y + y), Quaternion.identity);
+            o.GetComponent<GunProjectileScript>().shooter = gameObject;
+            NetworkServer.Spawn(o);
         }
 
         public void setGunTrue()
@@ -326,16 +332,19 @@ namespace UnityStandardAssets._2D
             networkAnimator.animator.SetBool("Dying", false);
             networkAnimator.animator.SetBool("Dead", true);
         }
+        
         IEnumerator MakeJetpackFire()
         {
             while (true)
-            {
+            { GameObject o;
                 if (fly)
                 {
                     if (!m_FacingRight)
-                        Instantiate(jetpackFire, new Vector3(GetComponent<Transform>().localPosition.x + 1.3f, GetComponent<Transform>().localPosition.y - .3f), Quaternion.identity);
+                         Instantiate(jetpackFire, new Vector3(GetComponent<Transform>().localPosition.x + 1.3f, GetComponent<Transform>().localPosition.y - .3f), Quaternion.identity);
                     else
-                        Instantiate(jetpackFire, new Vector3(GetComponent<Transform>().localPosition.x - .2f, GetComponent<Transform>().localPosition.y - .3f), Quaternion.identity);
+                         Instantiate(jetpackFire, new Vector3(GetComponent<Transform>().localPosition.x - .2f, GetComponent<Transform>().localPosition.y - .3f), Quaternion.identity);
+
+                   // NetworkServer.Spawn(o);
                 }
                 yield return new WaitForSeconds(.05f);
 
@@ -352,10 +361,10 @@ namespace UnityStandardAssets._2D
                     gameObject.transform.position = new Vector3(-246, -190, 0);
                     break;
                 case "cave_2":
-                    gameObject.transform.position = new Vector3(165, -296, 0);
+                    gameObject.transform.position = new Vector3(167, -154, 0);
                     break;
                 case "cave_3":
-                    gameObject.transform.position = new Vector3(-159, -190, 0);
+                    gameObject.transform.position = new Vector3(-159, -295, 0);
                     break;
                 case "cave_4":
                     gameObject.transform.position = new Vector3(-246, -190, 0);
@@ -389,6 +398,14 @@ namespace UnityStandardAssets._2D
 
 
         }
+        
+        private void OnDestroy()
+        {
+            Debug.Log("Destroy");
+            
+
+        }
+
         IEnumerator DamageDelay(float delayTime)
         {
             yield return new WaitForSeconds(delayTime);

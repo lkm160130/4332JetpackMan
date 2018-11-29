@@ -10,10 +10,10 @@ public class GameManagerScript : NetworkBehaviour
     
 
     public static int partsCollected = 0;
-    static bool part1 = false;
-    static bool part2 = false;
-    static bool part3 = false;
-    static bool part4 = false;
+    public static bool part1 = false;
+    public static bool part2 = false;
+    public static bool part3 = false;
+    public static bool part4 = false;
 
     public static bool isPartCollected(string partName)
     {
@@ -66,7 +66,7 @@ public class GameManagerScript : NetworkBehaviour
 
     // Update is called once per frame
     void Update() {
-
+        
     }
 
     

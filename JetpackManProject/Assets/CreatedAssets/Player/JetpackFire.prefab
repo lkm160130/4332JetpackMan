@@ -166,7 +166,7 @@ MonoBehaviour:
     i14: 27
     i15: 42
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!212 &212827350618151398
 SpriteRenderer:
   m_ObjectHideFlags: 1
