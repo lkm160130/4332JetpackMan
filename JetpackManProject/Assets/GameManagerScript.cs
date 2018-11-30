@@ -100,17 +100,18 @@ public class GameManagerScript : NetworkBehaviour
 
     }
 
+
     [Command]
     public void CmdEnableRestartScreen()
     {
-        GameObject.FindGameObjectWithTag("RestartScreen").GetComponent<Canvas>().enabled = true;
+        GameObject.FindGameObjectWithTag("GameOver").GetComponent<Canvas>().enabled = true;
 
     }
 
     [Command]
     public void CmdDisableRestartScreen()
     {
-        GameObject.FindGameObjectWithTag("RestartScreen").GetComponent<Canvas>().enabled = false;
+        GameObject.FindGameObjectWithTag("GameOver").GetComponent<Canvas>().enabled = false;
 
     }
 

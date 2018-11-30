@@ -41,9 +41,12 @@ namespace UnityStandardAssets._2D
             {
                 players[i].GetComponent<BarryCharacter>().resetPosition();
                 players[i].GetComponent<BarryCharacter>().BarryHealth = 3;
+                players[i].GetComponent<BarryCharacter>().gun = false;
                 players[i].GetComponent<Animator>().SetBool("Dead", false);
                 players[i].GetComponent<Animator>().SetBool("Dying", false);
                 players[i].GetComponent<Animator>().SetBool("Gun", false);
+                players[i].GetComponent<Animator>().SetBool("Plain", true);
+                
             }
             GameManagerScript.KillAllEnemies();
             GameManagerScript.SpawnAllEnemies();

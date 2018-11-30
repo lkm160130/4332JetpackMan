@@ -78,8 +78,8 @@ namespace UnityStandardAssets._2D
         {
             
            if(BarryHealth <= 0)
-            {   
-                GameObject.FindGameObjectWithTag("GameOver").GetComponent<Canvas>().enabled = true;
+            {
+                GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerScript>().CmdEnableRestartScreen();
             }
 
 
