@@ -11,6 +11,10 @@ TagManager:
   - BoundaryCollider
   - GameOver
   - EnemySpawner
+  - PartSpawner
+  - GameManager
+  - ShipPart
+  - WinScreen
   layers:
   - Default
   - TransparentFX

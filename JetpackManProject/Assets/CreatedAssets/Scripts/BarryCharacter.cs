@@ -376,7 +376,7 @@ namespace UnityStandardAssets._2D
                     gameObject.transform.position = new Vector3(-159, -295, 0);
                     break;
                 case "cave_4":
-                    gameObject.transform.position = new Vector3(-246, -190, 0);
+                    gameObject.transform.position = new Vector3(234, -299, 0);
                     break;
                 case "cave_5":
                     gameObject.transform.position = new Vector3(-246, -190, 0);
@@ -402,7 +402,10 @@ namespace UnityStandardAssets._2D
                 case "ExitCave4":
                     gameObject.transform.position = new Vector3(-146, -8, 0);
                     break;
-                    
+                case "ship2":
+                    BarryHealth = 3;
+                    break;
+
             }
 
 
@@ -428,6 +431,7 @@ namespace UnityStandardAssets._2D
 
         public void resetPosition()
         {
+            Debug.Log("respawn");
             transform.position = GameObject.Find("Respawn").transform.position;
         }
     }

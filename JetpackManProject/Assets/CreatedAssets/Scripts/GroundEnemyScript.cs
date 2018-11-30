@@ -143,8 +143,10 @@ namespace UnityStandardAssets._2D
             {
                 double shortestDistance = double.MaxValue;
                 closestObject = players[0];
+
                 for (int i = 0; i < players.Length; i++)
                 {
+                    if (players[i] != null) { 
                     double distance = System.Math.Pow(players[i].transform.position.x - point.position.x, 2) + System.Math.Pow(players[i].transform.position.y - point.position.y, 2);
 
                     if (distance < shortestDistance)
@@ -152,6 +154,7 @@ namespace UnityStandardAssets._2D
                         shortestDistance = distance;
                         closestObject = players[i];
                     }
+                }
                 }
                 return closestObject;
             }

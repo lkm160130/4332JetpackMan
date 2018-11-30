@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class PartSpawner : MonoBehaviour {
+public class PartSpawner : NetworkBehaviour {
 
     [SerializeField] public GameObject part;
     [SerializeField] public float x;
@@ -16,13 +17,21 @@ public class PartSpawner : MonoBehaviour {
 
     private void Awake()
     {
-        part.GetComponent<ShipPart>().partName = thisPartName;
-        if(!GameManagerScript.isPartCollected(part.GetComponent<ShipPart>().partName))
-        Instantiate(part, new Vector3(x, y), Quaternion.identity);
+        //spawnPart();
     }
 
     // Update is called once per frame
     void Update () {
 		
 	}
+
+    public void spawnPart()
+    {
+        Debug.Log("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSs");
+        if (!GameManagerScript.isPartCollected(thisPartName)) { 
+        GameObject o = Instantiate(part, transform.position, Quaternion.identity);
+        NetworkServer.Spawn(o);
+    }
+ 
+    }
 }

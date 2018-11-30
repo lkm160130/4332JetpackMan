@@ -23,7 +23,7 @@ public class ShipPart : MonoBehaviour {
 
         if (collidedObject.tag == "Player")
         {
-            GameManagerScript.partsCollected++;
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerScript>().partsCollected++;
             GameManagerScript.registerPartCollected(partName);
 
             Destroy(gameObject);

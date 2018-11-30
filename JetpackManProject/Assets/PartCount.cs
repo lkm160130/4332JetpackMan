@@ -12,7 +12,7 @@ public class PartCount : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        int partCount = GameManagerScript.partsCollected;
+        int partCount = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerScript>().partsCollected;
         GetComponent<Text>().text = partCount.ToString();
 	}
 }

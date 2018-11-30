@@ -8,8 +8,8 @@ public class GameManagerScript : NetworkBehaviour
     
 
     
-    
-    public static int partsCollected = 0;
+    [SyncVar]
+    public int partsCollected = 0;
 
     public static bool part1 = false;
     public static bool part2 = false;
@@ -76,15 +76,66 @@ public class GameManagerScript : NetworkBehaviour
     // Update is called once per frame
     void Update() {
         if(Begun == false)
-        {
+        {   
             SpawnAllEnemies();
+            SpawnParts();
             Begun = true;
         }
+        if(partsCollected >= 4)
+        {
+            CmdEnableWinScreen();
+        }
+    }
+    [Command]
+    public void CmdEnableWinScreen()
+    {
+        GameObject.FindGameObjectWithTag("WinScreen").GetComponent<Canvas>().enabled = true;
+
+    }
+
+    [Command]
+    public void CmdDisableWinScreen()
+    {
+        GameObject.FindGameObjectWithTag("WinScreen").GetComponent<Canvas>().enabled = false;
+
+    }
+
+    [Command]
+    public void CmdEnableRestartScreen()
+    {
+        GameObject.FindGameObjectWithTag("RestartScreen").GetComponent<Canvas>().enabled = true;
+
+    }
+
+    [Command]
+    public void CmdDisableRestartScreen()
+    {
+        GameObject.FindGameObjectWithTag("RestartScreen").GetComponent<Canvas>().enabled = false;
+
     }
 
     public static void Begin()
     {
         
+    }
+
+    public static void SpawnParts()
+    {
+        GameObject[] partSpawners = GameObject.FindGameObjectsWithTag("PartSpawner");
+
+        for (int j = 0; j < partSpawners.Length; j++)
+        {
+            partSpawners[j].GetComponent<PartSpawner>().spawnPart();
+        }
+    }
+
+    public static void DestroyParts()
+    {
+        GameObject[] a = GameObject.FindGameObjectsWithTag("ShipPart");
+        for(int i = 0; i < a.Length; i++)
+        {
+            Destroy(a[i]);
+        }
     }
     
     public static void  SpawnAllEnemies()

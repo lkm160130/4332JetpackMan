@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 212040655321806498}
   - component: {fileID: 114338508543176142}
   - component: {fileID: 58750410234315528}
+  - component: {fileID: 114300286372717740}
   m_Layer: 0
   m_Name: ShipPart
-  m_TagString: Untagged
+  m_TagString: ShipPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,6 +58,38 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &114300286372717740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1988368756366412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 17
+    i1: 203
+    i2: 4
+    i3: 2
+    i4: 188
+    i5: 193
+    i6: 200
+    i7: 52
+    i8: 168
+    i9: 100
+    i10: 147
+    i11: 42
+    i12: 217
+    i13: 75
+    i14: 225
+    i15: 167
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114338508543176142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d2b5cbfc98cb84787330203ec71e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partName: part1
+  partName: part2
 --- !u!212 &212040655321806498
 SpriteRenderer:
   m_ObjectHideFlags: 1
